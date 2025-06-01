@@ -5,4 +5,5 @@
 3. EfficientNet-B3 / img_size = 300 / Dropout=0.3
 4. EfficientNet-V2-S
 5. EfficientNet-V2-M / img_size=384
-5. EfficientNet-V2-M / img_size=384 / label_smoothing=0.1
+6. EfficientNet-V2-M / img_size=384 / label_smoothing=0.1
+7. EfficientNet-V2-M / img_size=384 / scheduler = CosineAnnealingWarmRestarts(optimizer, T_0=2, T_mult=1)
