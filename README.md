@@ -7,3 +7,4 @@
 5. EfficientNet-V2-M / img_size=384
 6. EfficientNet-V2-M / img_size=384 / label_smoothing=0.1
 7. EfficientNet-V2-M / img_size=384 / scheduler = CosineAnnealingLR
+8. EfficientNet-V2-M / img_size=384 / scheduler = CosineAnnealingLR / EPOCH = 25
