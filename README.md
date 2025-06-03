@@ -10,4 +10,5 @@
 8. efficientnetv2_rw_m / img_size=384 / scheduler = CosineAnnealingLR / EPOCH = 25
 9. efficientnetv2_rw_m / img_size=384 / scheduler = CosineAnnealingLR / EPOCH = 20 / log_loss, val_acc, val_loss 기준 / best_logloss
 10. efficientnetv2_rw_m / img_size=384 / scheduler = CosineAnnealingLR / EPOCH = 20 / log_loss, val_acc, val_loss 기준 / best_val_acc
-10. tf_efficientnet_b4_ns / img_size=380 / EPOCH = 20 / log_loss, val_acc, val_loss 기준
+11. tf_efficientnet_b4_ns / img_size=380 / EPOCH = 20 / log_loss, val_acc, val_loss 기준 / best_val_acc
+12. tf_efficientnet_b4_ns / img_size=380 / EPOCH = 20 / log_loss, val_acc, val_loss 기준 / best_logloss
