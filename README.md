@@ -21,3 +21,4 @@
     transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),  # 색상 변형
 15. 14 -> MixUp
 16. 14 -> MixUp -> stratifiedkfold 5 -> 에러로 4까지만 학습, 4개 앙상블
+17. 16 -> 5crop TTA 적용
