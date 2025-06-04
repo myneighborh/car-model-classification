@@ -20,3 +20,4 @@
     transforms.RandomRotation(10),                                    # ±10도 회전
     transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),  # 색상 변형
 15. 14 -> MixUp
+16. 14 -> MixUp -> stratifiedkfold 5
