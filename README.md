@@ -75,3 +75,28 @@
 
 17. 14 -> EPOCH = 12 / optimizer = AdamW   
     0.1870
+
+18. 17 + Albumentation   
+    train_transform = A.Compose([
+    A.Resize(height=CFG['IMG_SIZE'] + 32, width=CFG['IMG_SIZE'] + 32),
+    A.RandomResizedCrop(size=(CFG['IMG_SIZE'], CFG['IMG_SIZE']),
+                        scale=(0.8, 1.0), ratio=(0.75, 1.33), p=1.0),
+    A.HorizontalFlip(p=0.5),
+    A.Rotate(limit=10, p=0.5),
+    A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1, p=0.8),
+    A.OneOf([
+        A.MotionBlur(p=0.2),
+        A.MedianBlur(blur_limit=3, p=0.1),
+        A.GaussianBlur(blur_limit=3, p=0.1),
+    ], p=0.3),
+    A.OneOf([
+        A.RandomBrightnessContrast(p=0.5),
+        A.CLAHE(p=0.3),
+        A.HueSaturationValue(p=0.3),
+    ], p=0.5),
+    A.CoarseDropout(max_holes=1, max_height=CFG['IMG_SIZE']//5, max_width=CFG['IMG_SIZE']//5, p=0.5),
+    A.Normalize(mean=(0.485, 0.456, 0.406),
+                std=(0.229, 0.224, 0.225)),
+    ToTensorV2()
+])   
+   0.2053
