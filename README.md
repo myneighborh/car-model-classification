@@ -73,5 +73,5 @@
     0.1762   
     5crop TTA 적용 시 성능 향상 없음
 
-17. 14 -> EPOCH = 12 / optimizer = AdamW
+17. 14 -> EPOCH = 12 / optimizer = AdamW   
     0.1870
