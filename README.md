@@ -104,5 +104,6 @@
 19. 17 -> MixUp -> Cutmix -> EPOCH = 12   
     0.1782   
 
-20. 19 -> model change: convnext_base_384_in22ft1k
+20. 19 -> model change: convnext_base_384_in22ft1k   
     0.1582
+21. 20 -> 2-layer MLP head with ReLU and Dropout
