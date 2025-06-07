@@ -105,3 +105,4 @@
     0.1782   
 
 20. 19 -> model change: convnext_base_384_in22ft1k
+    0.1582
