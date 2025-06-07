@@ -106,7 +106,7 @@
 
 20. 19 -> model change: convnext_base_384_in22ft1k   
     0.1582
-21. 20 -> 2-layer MLP head with ReLU and Dropout
+21. 20 -> filter 6 noises
 
 #### 노이즈:
 7시리즈_G11_2016_2018_0040.jpg
