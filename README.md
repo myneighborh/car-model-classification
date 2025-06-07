@@ -100,3 +100,6 @@
     ToTensorV2()
 ])   
    0.2053
+
+19. 14. 13 -> MixUp -> Cutmix -> EPOCH = 12
+    0.1782   
