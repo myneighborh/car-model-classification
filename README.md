@@ -101,5 +101,7 @@
 ])   
    0.2053
 
-19. 14. 13 -> MixUp -> Cutmix -> EPOCH = 12
+19. 17 -> MixUp -> Cutmix -> EPOCH = 12   
     0.1782   
+
+20. 19 -> model change: convnext_base_384_in22ft1k
