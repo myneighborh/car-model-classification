@@ -106,8 +106,12 @@
 
 20. 19 -> model change: convnext_base_384_in22ft1k   
     0.1582
-21. 20 -> filter 6 noises
 
+21. 20 -> filter 6 noises   
+    0.1584
+
+22. 20 -> Cutmix 제거
+    
 #### 노이즈:
 7시리즈_G11_2016_2018_0040.jpg
 GLE_클래스_W167_2019_2024_0068.jpg
