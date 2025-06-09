@@ -110,10 +110,11 @@
 21. 20 -> filter 6 noises   
     0.1584
 
-22. 20 -> Cutmix 제거
+22. 20 -> Cutmix 제거   
     0.1774
 
-23. 20 -> mixup alpha=0.2, cutmix alpha=1.0   
+23. 21 -> mixup alpha=0.2, cutmix alpha=1.0   
+    0.1566
 
     
 #### 노이즈:
