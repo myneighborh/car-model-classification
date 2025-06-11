@@ -130,7 +130,8 @@
 
 28. 에러
 
-29. 25 -> TTA 3 ensemble
+29. 25 -> TTA 3 ensemble(soft voting)
+30. 29 -> logit ensemble
     
 #### 노이즈:
 7시리즈_G11_2016_2018_0040.jpg
