@@ -139,8 +139,10 @@
 31. efficientnetv2_rw_m test epoch20 18   
     0.1767
     
-33. convnext_base_384_in22ft1k epoch20 19   
+32. convnext_base_384_in22ft1k epoch20 19   
     0.1520
+
+33. 29 -> TTA 5
     
 #### 노이즈:
 7시리즈_G11_2016_2018_0040.jpg
