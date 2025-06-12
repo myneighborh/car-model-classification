@@ -133,8 +133,14 @@
 29. 25 -> TTA 3 ensemble(soft voting)   
     0.1468
     
-31. 29 -> logit ensemble   
+30. 29 -> logit ensemble   
     0.1469
+
+31. efficientnetv2_rw_m test epoch20 18   
+    0.1767
+    
+33. convnext_base_384_in22ft1k epoch20 19   
+    0.1520
     
 #### 노이즈:
 7시리즈_G11_2016_2018_0040.jpg
