@@ -146,6 +146,7 @@
     0.1471
 
 34. apply: stratified k-fold 3 softvoting
+    0.1436
     
 #### 노이즈:
 7시리즈_G11_2016_2018_0040.jpg
