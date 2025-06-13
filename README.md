@@ -147,6 +147,10 @@
 
 34. apply: stratified k-fold 3 softvoting
     0.1436
+
+35. 전체 모델 재학습. 클래스 수 에러
+
+36. fold ensemble with full model blending
     
 #### 노이즈:
 7시리즈_G11_2016_2018_0040.jpg
