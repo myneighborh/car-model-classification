@@ -149,8 +149,8 @@
     0.1436
 
 35. 전체 모델 재학습. 클래스 수 에러
-
-36. fold ensemble with full model blending
+   0.1486
+36. 3 fold 3 tta ensemble
     
 #### 노이즈:
 7시리즈_G11_2016_2018_0040.jpg
