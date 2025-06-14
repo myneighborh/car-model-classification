@@ -142,15 +142,17 @@
 32. convnext_base_384_in22ft1k epoch20 19   
     0.1520
 
-33. 29 -> TTA 5
+33. 29 -> TTA 5   
     0.1471
 
-34. apply: stratified k-fold 3 softvoting
+34. apply: stratified k-fold 3 softvoting   
     0.1436
 
-35. 전체 모델 재학습. 클래스 수 에러
-   0.1486
-36. 3 fold 3 tta ensemble
+35. 전체 모델 재학습. 클래스 수 에러   
+    0.1486
+36. 3 fold 3 tta ensemble   
+    0.1435
+
     
 #### 노이즈:
 7시리즈_G11_2016_2018_0040.jpg
