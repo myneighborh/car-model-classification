@@ -1,167 +1,143 @@
-# car-model-classification
+# Car Model Classification – Experiment Log
 
-1. Baseline: Resnet18  
-   0.4284
+This project explores various models, schedulers, augmentations, and ensemble techniques to improve classification performance on car model images.  
+Evaluation metric: **Log Loss**
 
-2. Resnet18 -> EfficientNet-B3  
-   0.4283  
-   효과 없음
+---
 
-3. efficientnet-b3 / img_size = 300 / Dropout=0.3  
-   0.6022  
-   드롭아웃 적용 => 오히려 성능 저하
+1. **Baseline: ResNet18**  
+   - 0.4284
 
-4. efficientnetv2_rw_s  
-   0.3677  
-   성능 향상
+2. **ResNet18 → EfficientNet-B3**  
+   - 0.4283  
+   - No improvement
 
-5. efficientnetv2_rw_m / img_size=384  
-   0.3003   
-   성능 더욱 향상
+3. **EfficientNet-B3 / img_size = 300 / Dropout = 0.3**  
+   - 0.6022  
+   - Applying dropout degraded performance
 
-6. efficientnetv2_rw_m / img_size=384 / label_smoothing=0.1  
-    0.3502   
-    라벨 스무딩 적용: 성능 하락
+4. **EfficientNetV2-RW-S**  
+   - 0.3677  
+   - Improved performance
 
-7. efficientnetv2_rw_m / img_size=384 / scheduler = CosineAnnealingLR => 실수로 1epoch에서 min scheduler로 수렴  
-    0.2579   
-    스케쥴러 적용하여 학습률 조정시 성능 향상
+5. **EfficientNetV2-RW-M / img_size = 384**  
+   - 0.3003  
+   - Further improvement
 
-8. efficientnetv2_rw_m / img_size=384 / scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=1) / EPOCH = 25  
-    0.3082   
-    ReduceLROnPlauteau 올바른 위치에 스케쥴러 적용 시 성능 향상되지 않음
+6. **EfficientNetV2-RW-M / img_size = 384 / label_smoothing = 0.1**  
+   - 0.3502  
+   - Applying label smoothing reduced performance
 
-9. efficientnetv2_rw_m / img_size=384 / scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=1)  
-    / EPOCH = 20 / log_loss, val_acc, val_loss 기준 / best_logloss  
-    0.2671   
-    logloss 기준이 더 성능 좋음
+7. **CosineAnnealingLR Scheduler (accidentally converged at min in 1 epoch)**  
+   - 0.2579  
+   - Significant improvement due to early LR drop
 
-10. efficientnetv2_rw_m / img_size=384 / scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=1)  
-    / EPOCH = 20 / log_loss, val_acc, val_loss 기준 / best_val_acc  
-    0.3208   
-    val_acc 기준 성능 안좋음
+8. **ReduceLROnPlateau / EPOCH = 25**  
+   - 0.3082  
+   - No improvement even with correct placement
 
-11. tf_efficientnet_b4_ns / img_size=380 / EPOCH = 20  
-    / log_loss, val_acc, val_loss 기준 / best_val_acc  
-    0.3877   
-    tf_efficientnet_b4_ns 모델 사용 성능 안좋음
+9. **ReduceLROnPlateau / EPOCH = 20 / Best based on log_loss**  
+   - 0.2671  
+   - Better performance than val_acc criterion
 
-12. tf_efficientnet_b4_ns / img_size=380 / EPOCH = 20  
-    / log_loss, val_acc, val_loss 기준 / best_logloss  
-    0.3135   
-    tf_efficientnet_b4_ns 모델 사용 성능 안좋음, logloss 기준이 더 좋음
+10. **ReduceLROnPlateau / EPOCH = 20 / Best based on val_acc**  
+    - 0.3208  
+    - Worse performance with val_acc criterion
 
-13. efficientnetv2_rw_m / img_size=384 / scheduler = CosineAnnealingLR / EPOCH = 10  
-    transforms.Resize((CFG['IMG_SIZE'] + 32, CFG['IMG_SIZE'] + 32)),  # 약간 크게 리사이즈 후  
-    transforms.RandomResizedCrop(CFG['IMG_SIZE'], scale=(0.8, 1.0)),  # 랜덤 크롭  
-    transforms.RandomHorizontalFlip(),                                # 좌우 뒤집기  
-    transforms.RandomRotation(10),                                    # ±10도 회전  
-    transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),  # 색상 변형  
-    0.2194   
-    증강 적용 시 성능 향상
+11. **tf_efficientnet_b4_ns / img_size = 380 / EPOCH = 20 / val_acc**  
+    - 0.3877  
+    - Underperformed
 
-14. 13 -> MixUp  
-    0.1956   
-    믹스업 적용 시 성능 향상
+12. **tf_efficientnet_b4_ns / img_size = 380 / EPOCH = 20 / log_loss**  
+    - 0.3135  
+    - Slightly better but still underperformed
 
-15. 14 -> stratifiedkfold 5  
-    -> 에러로 4까지만 학습, 4개 앙상블  
-    0.1723   
-    stratifiedkfold 적용 시 성능 향상
+13. **EfficientNetV2-RW-M / CosineAnnealingLR / EPOCH = 10**  
+    - Transforms: Resize(+32) → RandomResizedCrop → Flip → Rotate → ColorJitter  
+    - 0.2194  
+    - Data augmentation significantly improved performance
 
-16. 15 -> 5crop TTA 적용  
-    0.1762   
-    5crop TTA 적용 시 성능 향상 없음
+14. **+ MixUp**  
+    - 0.1956  
+    - Further improvement
 
-17. 14 -> EPOCH = 12 / optimizer = AdamW   
-    0.1870
+15. **+ Stratified K-Fold (trained 4 folds, ensemble of 4)**  
+    - 0.1723  
+    - Performance boost with K-Fold
 
-18. 17 + Albumentation   
-    train_transform = A.Compose([
-    A.Resize(height=CFG['IMG_SIZE'] + 32, width=CFG['IMG_SIZE'] + 32),
-    A.RandomResizedCrop(size=(CFG['IMG_SIZE'], CFG['IMG_SIZE']),
-                        scale=(0.8, 1.0), ratio=(0.75, 1.33), p=1.0),
-    A.HorizontalFlip(p=0.5),
-    A.Rotate(limit=10, p=0.5),
-    A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1, p=0.8),
-    A.OneOf([
-        A.MotionBlur(p=0.2),
-        A.MedianBlur(blur_limit=3, p=0.1),
-        A.GaussianBlur(blur_limit=3, p=0.1),
-    ], p=0.3),
-    A.OneOf([
-        A.RandomBrightnessContrast(p=0.5),
-        A.CLAHE(p=0.3),
-        A.HueSaturationValue(p=0.3),
-    ], p=0.5),
-    A.CoarseDropout(max_holes=1, max_height=CFG['IMG_SIZE']//5, max_width=CFG['IMG_SIZE']//5, p=0.5),
-    A.Normalize(mean=(0.485, 0.456, 0.406),
-                std=(0.229, 0.224, 0.225)),
-    ToTensorV2()
-])   
-   0.2053
+16. **+ 5Crop TTA**  
+    - 0.1762  
+    - No improvement from 5Crop TTA
 
-19. 17 -> MixUp -> Cutmix -> EPOCH = 12   
-    0.1782   
+17. **EPOCH = 12 / Optimizer = AdamW**  
+    - 0.1870
 
-20. 19 -> model change: convnext_base_384_in22ft1k   
-    0.1582
+18. **+ Albumentations**  
+    - Pipeline: Resize → RandomResizedCrop → Flip → Rotate → ColorJitter  
+    - OneOf(blur), OneOf(contrast), CoarseDropout, Normalize  
+    - 0.2053  
+    - Performance slightly dropped
 
-21. 20 -> filter 6 noises   
-    0.1584
+19. **+ MixUp → CutMix / EPOCH = 12**  
+    - 0.1782
 
-22. 20 -> Cutmix 제거   
-    0.1774
+20. **Model change → convnext_base_384_in22ft1k**  
+    - 0.1582
 
-23. 21 -> mixup alpha=0.2, cutmix alpha=1.0   
-    0.1566
+21. **+ Removed 6 noisy images**  
+    - 0.1584
 
-24. 23 같은 조건 재학습 테스트   
-    0.1507
+22. **- Removed CutMix**  
+    - 0.1774
 
-25. 24 -> 에포크 15번   
-    0.1486
+23. **MixUp α = 0.2, CutMix α = 1.0**  
+    - 0.1566
 
-26. 25 -> 13 ~ 15 소프트 보팅   
-    0.1493
+24. **Same config retraining**  
+    - 0.1507
 
-27. 25 -> 13 ~ 15 로짓 앙상블   
-    0.1496
+25. **Increased EPOCH to 15**  
+    - 0.1486
 
-28. 에러
+26. **Soft voting ensemble (folds 13~15)**  
+    - 0.1493
 
-29. 25 -> TTA 3 ensemble(soft voting)   
-    0.1468
-    
-30. 29 -> logit ensemble   
-    0.1469
+27. **Logit ensemble (folds 13~15)**  
+    - 0.1496
 
-31. efficientnetv2_rw_m test epoch20 18   
-    0.1767
-    
-32. convnext_base_384_in22ft1k epoch20 19   
-    0.1520
+28. **Error occurred**
 
-33. 29 -> TTA 5   
-    0.1471
+29. **TTA (3 views) + Soft Voting**  
+    - 0.1468
 
-34. apply: stratified k-fold 3 softvoting   
-    0.1436
+30. **TTA (3 views) + Logit Ensemble**  
+    - 0.1469
 
-35. 전체 모델 재학습. 클래스 수 에러   
-    0.1486
-36. 3 fold 3 tta ensemble   
-    0.1435
+31. **EfficientNetV2-RW-M / test / EPOCH = 20**  
+    - 0.1767
 
-    
-#### 노이즈:
-7시리즈_G11_2016_2018_0040.jpg
-GLE_클래스_W167_2019_2024_0068.jpg
-SM7_뉴아트_2008_2011_0053.jpg
-아반떼_N_2022_2023_0064.jpg
-프리우스_4세대_2019_2022_0052.jpg
-아반떼_N_2022_2023_0035.jpg
+32. **ConvNeXt-Base / EPOCH = 20**  
+    - 0.1520
 
-#### 노이즈 후보:
-박스터_718_2017_2024_0011.jpg
-더_기아_레이_EV_2024_2025_0078.jpg
+33. **TTA (5 views)**  
+    - 0.1471
+
+34. **Stratified K-Fold (3 folds) + Soft Voting**  
+    - 0.1436
+
+35. **Retrained all models (class count error occurred)**  
+    - 0.1486
+
+36. **3-Fold + 3-TTA Ensemble**  
+    - 0.1435
+
+---
+
+## Removed Noise Images
+
+- 7시리즈_G11_2016_2018_0040.jpg  
+- GLE_클래스_W167_2019_2024_0068.jpg  
+- SM7_뉴아트_2008_2011_0053.jpg  
+- 아반떼_N_2022_2023_0064.jpg  
+- 프리우스_4세대_2019_2022_0052.jpg  
+- 아반떼_N_2022_2023_0035.jpg
