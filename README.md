@@ -1,9 +1,17 @@
-# Car Model Classification – Experiment Log
+# Car Model Classification
 
-This project explores various models, schedulers, augmentations, and ensemble techniques to improve classification performance on car model images.  
-Evaluation metric: **Log Loss**
+The objective was to develop a deep learning model that classifies car models from actual used car images.  
+I experimented with various backbones, optimizers, learning rate schedulers, augmentations, and ensemble methods to improve model performance.  
+The final model was built using PyTorch with ConvNeXt as the backbone, MixUp/CutMix augmentations, and Stratified K-Fold with TTA-based ensemble.
 
----
+## Competition Results
+
+| Leaderboard         | Log Loss | Rank        |
+|:-------------------:|:--------:|:-----------:|
+| Public  | 0.14351   | 76 / 749    |
+| Private | 0.14099   | 75 / 748    |
+
+## Experiment Log
 
 1. **Baseline: ResNet18**  
    - 0.4284
@@ -130,8 +138,6 @@ Evaluation metric: **Log Loss**
 
 36. **3-Fold + 3-TTA Ensemble**  
     - 0.1435
-
----
 
 ## Removed Noise Images
 
