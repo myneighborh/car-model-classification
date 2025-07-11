@@ -1,8 +1,12 @@
-# Car Model Classification
+# Vehicle Model Classification
 
-The objective was to develop a deep learning model that classifies car models from actual used car images.  
+The objective was to develop a deep learning model that classifies car models from actual used vehicle images.  
 I experimented with various backbones, optimizers, learning rate schedulers, augmentations, and ensemble methods to improve model performance.  
 The final model was built using PyTorch with ConvNeXt as the backbone, MixUp/CutMix augmentations, and Stratified K-Fold with TTA-based ensemble.
+
+## Model Demo
+
+![output](https://github.com/user-attachments/assets/5e6d6218-e045-4e13-b13a-f28084b11be7)
 
 ## Competition Results
 
@@ -147,6 +151,3 @@ The final model was built using PyTorch with ConvNeXt as the backbone, MixUp/Cut
 - 아반떼_N_2022_2023_0064.jpg  
 - 프리우스_4세대_2019_2022_0052.jpg  
 - 아반떼_N_2022_2023_0035.jpg
-
-## Model Demo
-![output](https://github.com/user-attachments/assets/5e6d6218-e045-4e13-b13a-f28084b11be7)
