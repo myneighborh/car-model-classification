@@ -1,8 +1,8 @@
 # Vehicle Model Classification
 
-The objective was to develop a deep learning model that classifies car models from actual used vehicle images.  
-I experimented with various backbones, optimizers, learning rate schedulers, augmentations, and ensemble methods to improve model performance.  
-The final model was built using PyTorch with ConvNeXt as the backbone, MixUp/CutMix augmentations, and Stratified K-Fold with TTA-based ensemble.
+The objective was to develop a deep learning model that classifies 696 actual used car models from real-world vehicle images.
+To enhance performance, I experimented with various backbones, optimizers, learning rate schedulers, data augmentations, and ensemble techniques.
+The final model was implemented in PyTorch using ConvNeXt as the backbone, MixUp/CutMix for augmentation, and a Stratified K-Fold ensemble with Test-Time Augmentation (TTA).
 
 ## Model Demo
 
