@@ -6,7 +6,7 @@ The final model was implemented in PyTorch using ConvNeXt as the backbone, MixUp
 
 ## Model Demo
 
-![output](https://github.com/user-attachments/assets/5e6d6218-e045-4e13-b13a-f28084b11be7)
+![output](https://github.com/user-attachments/assets/8d85ad35-b6bc-4579-b1ad-177feba249e5)
 
 ## Competition Results
 
