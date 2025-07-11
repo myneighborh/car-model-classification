@@ -149,3 +149,4 @@ The final model was built using PyTorch with ConvNeXt as the backbone, MixUp/Cut
 - 아반떼_N_2022_2023_0035.jpg
 
 ## Model Demo
+![output](https://github.com/user-attachments/assets/5e6d6218-e045-4e13-b13a-f28084b11be7)
