@@ -147,3 +147,5 @@ The final model was built using PyTorch with ConvNeXt as the backbone, MixUp/Cut
 - 아반떼_N_2022_2023_0064.jpg  
 - 프리우스_4세대_2019_2022_0052.jpg  
 - 아반떼_N_2022_2023_0035.jpg
+
+## Model Demo
