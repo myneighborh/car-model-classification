@@ -1,4 +1,4 @@
-# Vehicle Model Classification
+# Vehicle Model Classifier
 
 The objective was to develop a deep learning model that classifies 696 actual used car models from real-world vehicle images.
 To enhance performance, I experimented with various backbones, optimizers, learning rate schedulers, data augmentations, and ensemble techniques.
