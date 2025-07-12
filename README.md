@@ -4,8 +4,9 @@ The objective was to develop a deep learning model that classifies 696 actual us
 To enhance performance, I experimented with various backbones, optimizers, learning rate schedulers, data augmentations, and ensemble techniques.
 The final model was implemented in PyTorch using ConvNeXt as the backbone, MixUp/CutMix for augmentation, and a Stratified K-Fold ensemble with Test-Time Augmentation (TTA).
 
-## Model Demo
-https://huggingface.co/spaces/myneighborh/vehicle-model-classifier
+## Live Demo
+[Click here to try the model in your browser](https://huggingface.co/spaces/myneighborh/vehicle-model-classifier)
+
 ![output](https://github.com/user-attachments/assets/8d85ad35-b6bc-4579-b1ad-177feba249e5)
 
 ## Competition Results
