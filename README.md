@@ -5,7 +5,7 @@ To enhance performance, I experimented with various backbones, optimizers, learn
 The final model was implemented in PyTorch using ConvNeXt as the backbone, MixUp/CutMix for augmentation, and a Stratified K-Fold ensemble with Test-Time Augmentation (TTA).
 
 ## Model Demo
-
+https://huggingface.co/spaces/myneighborh/vehicle-model-classifier
 ![output](https://github.com/user-attachments/assets/8d85ad35-b6bc-4579-b1ad-177feba249e5)
 
 ## Competition Results
