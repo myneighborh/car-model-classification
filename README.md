@@ -145,7 +145,7 @@ The final model was implemented in PyTorch using ConvNeXt as the backbone, MixUp
     - 0.1435
 
 ## Removed Noise Images
-
+The following images have been removed from the dataset as they were identified as noise samples unrelated to their assigned labels:
 - 7시리즈_G11_2016_2018_0040.jpg  
 - GLE_클래스_W167_2019_2024_0068.jpg  
 - SM7_뉴아트_2008_2011_0053.jpg  
